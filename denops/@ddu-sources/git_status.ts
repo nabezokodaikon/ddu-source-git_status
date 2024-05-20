@@ -58,8 +58,12 @@ export class Source extends BaseSource<Params> {
               abortController.signal
             )
           ) {
-            const word = line.substring(3);
             const status = line.substring(0, 2);
+            if (status.trim() == "D") {
+              continue;
+            }
+
+            const word = line.substring(3);
             const path = resolve(word);
             const display = `[${status}] ${word}`;
 
